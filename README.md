@@ -2,7 +2,7 @@
 
 Color middleware for [tweening](https://github.com/colinmeinke/tweening).
 
-**kb gzipped.**
+**Under 1kb gzipped.**
 
 ## Usage
 
