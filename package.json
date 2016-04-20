@@ -45,7 +45,7 @@
   "license": "ISC",
   "main": "lib/index.js",
   "name": "tweening-color-middleware",
-  "peer-dependencies": {
+  "peerDependencies": {
     "tweening": "^1.2.0"
   },
   "scripts": {
