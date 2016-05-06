@@ -36,7 +36,7 @@ const colorMiddleware = TweeningColorMiddleware.default;
 And if you just want to smash in a Javascript file you're
 also covered. Drop this in place ...
 
-[https://npmcdn.com/tweening-color-middleware@1.1.0/dist/tweening-color-middleware.min.js](https://npmcdn.com/tweening-color-middleware@1.1.0/dist/tweening-color-middleware.min.js)
+[https://npmcdn.com/tweening-color-middleware@1.2.0/dist/tweening-color-middleware.min.js](https://npmcdn.com/tweening-color-middleware@1.2.0/dist/tweening-color-middleware.min.js)
 
 Then access it on the `TweeningColorMiddleware` global variable.
 

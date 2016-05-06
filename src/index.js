@@ -25,7 +25,7 @@ const isRgbObj = v => (
 
 const isRgbaObj = v => (
   typeof v === 'object' &&
-  v.colorType === 'rgba'
+  ( v.colorType === 'rgba' || v.a < 1 )
 );
 
 const hexToObj = hex => {
@@ -41,6 +41,7 @@ const hexToObj = hex => {
     r: parseInt( value.slice( 0, 2 ), 16 ),
     g: parseInt( value.slice( 2, 4 ), 16 ),
     b: parseInt( value.slice( 4, 6 ), 16 ),
+    a: 1,
   };
 };
 
@@ -55,6 +56,7 @@ const rgbToObj = v => {
     r: parseFloat( r ),
     g: parseFloat( g ),
     b: parseFloat( b ),
+    a: 1,
   };
 };
 
@@ -103,12 +105,12 @@ const colorMiddleware = {
     return v;
   },
   o: v => {
-    if ( isHexObj( v )) {
+    if ( isRgbaObj( v )) {
+      return objToRgba( v );
+    } else if ( isHexObj( v )) {
       return objToHex( v );
     } else if ( isRgbObj( v )) {
       return objToRgb( v );
-    } else if ( isRgbaObj( v )) {
-      return objToRgba( v );
     }
 
     return v;
