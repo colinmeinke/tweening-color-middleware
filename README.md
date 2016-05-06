@@ -2,11 +2,11 @@
 
 Color middleware for [tweening](https://github.com/colinmeinke/tweening).
 
-**Under 1kb gzipped.**
+**1.1kb gzipped.**
 
 ## Usage
 
-Currently only supports hexidecimal colors:
+Currently supports hex, rgb and rgba colors:
 
 ```js
 import tween from 'tweening';
@@ -36,7 +36,7 @@ const colorMiddleware = TweeningColorMiddleware.default;
 And if you just want to smash in a Javascript file you're
 also covered. Drop this in place ...
 
-[https://npmcdn.com/tweening-color-middleware@1.0.0/dist/tweening-color-middleware.min.js](https://npmcdn.com/tweening-color-middleware@1.0.0/dist/tweening-color-middleware.min.js)
+[https://npmcdn.com/tweening-color-middleware@1.1.0/dist/tweening-color-middleware.min.js](https://npmcdn.com/tweening-color-middleware@1.1.0/dist/tweening-color-middleware.min.js)
 
 Then access it on the `TweeningColorMiddleware` global variable.
 

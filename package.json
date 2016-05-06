@@ -42,6 +42,7 @@
     "hexidecimal",
     "morph",
     "rgb",
+    "rgba",
     "tween",
     "tweening",
     "tweening-middleware"
