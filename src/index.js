@@ -43,4 +43,5 @@ const colorMiddleware = {
   o: v => isRgb( v ) ? rgbToHex( v ) : v,
 };
 
+export { isHex };
 export default colorMiddleware;

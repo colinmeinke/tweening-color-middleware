@@ -17,7 +17,7 @@ tween({
   to: '#F0F0F0',
   duration: 5000,
   middleware: [ colorMiddleware ],
-  next: color => console.log( color );
+  next: color => console.log( color ),
 });
 ```
 
