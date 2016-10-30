@@ -1,44 +1,24 @@
-import 'babel-polyfill';
+/* eslint-env mocha */
 
-import expect from 'expect';
-import tween from 'tweening';
+import 'babel-polyfill'
 
-import colorMiddleware, { isHexStr, isRgbStr, isRgbaStr } from '../src';
+import expect from 'expect'
+import tween from 'tweening'
+
+import colorMiddleware, { isHexStr, isRgbStr, isRgbaStr } from '../src'
 
 global.window = {
-  requestAnimationFrame: func => setTimeout( func, 16.667 )
-};
+  requestAnimationFrame: func => setTimeout(func, 16.667)
+}
 
-export default window;
+export default window
 
-describe( 'hex', () => {
-  it( 'should tween between hex colors', done => {
-    const from = '#000000';
-    const to = '#F0F0F0';
+describe('hex', () => {
+  it('should tween between hex colors', done => {
+    const from = '#000000'
+    const to = '#F0F0F0'
 
-    let currentColor;
-
-    tween({
-      from,
-      to,
-      duration: 100,
-      middleware: [ colorMiddleware ],
-      next: color => {
-        currentColor = color;
-        expect( isHexStr( color )).toBe( true );
-      },
-      complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
-
-  it( 'should tween between shorthand hex colors', done => {
-    const from = '#09B';
-    const to = '#F7D';
-
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -46,21 +26,21 @@ describe( 'hex', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect( isHexStr( color )).toBe( true );
+        currentColor = color
+        expect(isHexStr(color)).toBe(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
 
-  it( 'should tween from hex color to rgb color', done => {
-    const from = '#000000';
-    const to = 'rgb(240,100,80)';
+  it('should tween between shorthand hex colors', done => {
+    const from = '#09B'
+    const to = '#F7D'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -68,21 +48,21 @@ describe( 'hex', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect([ isHexStr( color ), isRgbStr( color )]).toInclude( true );
+        currentColor = color
+        expect(isHexStr(color)).toBe(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
 
-  it( 'should tween from hex color to rgba color', done => {
-    const from = '#000000';
-    const to = 'rgba(240,100,80,0.5)';
+  it('should tween from hex color to rgb color', done => {
+    const from = '#000000'
+    const to = 'rgb(240,100,80)'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -90,23 +70,21 @@ describe( 'hex', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect([ isHexStr( color ), isRgbaStr( color )]).toInclude( true );
+        currentColor = color
+        expect([ isHexStr(color), isRgbStr(color) ]).toInclude(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
-});
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
 
-describe( 'rgb', () => {
-  it( 'should tween between rgb colors', done => {
-    const from = 'rgb( 200, 50, 30 )';
-    const to = 'rgb(240,100,80)';
+  it('should tween from hex color to rgba color', done => {
+    const from = '#000000'
+    const to = 'rgba(240,100,80,0.5)'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -114,21 +92,23 @@ describe( 'rgb', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect( isRgbStr( color )).toBe( true );
+        currentColor = color
+        expect([ isHexStr(color), isRgbaStr(color) ]).toInclude(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
+})
 
-  it( 'should tween from rgb color to hex color', done => {
-    const from = 'rgb(240,100,80)';
-    const to = '#000000';
+describe('rgb', () => {
+  it('should tween between rgb colors', done => {
+    const from = 'rgb( 200, 50, 30 )'
+    const to = 'rgb(240,100,80)'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -136,21 +116,21 @@ describe( 'rgb', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect([ isRgbStr( color ), isHexStr( color )]).toInclude( true );
+        currentColor = color
+        expect(isRgbStr(color)).toBe(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
 
-  it( 'should tween from rgb color to rgba color', done => {
-    const from = 'rgb(240,100,80)';
-    const to = 'rgba( 200, 50, 30, 0.5 )';
+  it('should tween from rgb color to hex color', done => {
+    const from = 'rgb(240,100,80)'
+    const to = '#000000'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -158,23 +138,21 @@ describe( 'rgb', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect([ isRgbStr( color ), isRgbaStr( color )]).toInclude( true );
+        currentColor = color
+        expect([ isRgbStr(color), isHexStr(color) ]).toInclude(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
-});
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
 
-describe( 'rgba', () => {
-  it( 'should tween between rgba colors', done => {
-    const from = 'rgba( 200, 50, 30, 0.5 )';
-    const to = 'rgba(240,100,80,0.95)';
+  it('should tween from rgb color to rgba color', done => {
+    const from = 'rgb(240,100,80)'
+    const to = 'rgba( 200, 50, 30, 0.5 )'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -182,21 +160,23 @@ describe( 'rgba', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect( isRgbaStr( color )).toBe( true );
+        currentColor = color
+        expect([ isRgbStr(color), isRgbaStr(color) ]).toInclude(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
+})
 
-  it( 'should tween from rgba color to hex color', done => {
-    const from = 'rgba( 200, 50, 30, 0.5 )';
-    const to = '#000000';
+describe('rgba', () => {
+  it('should tween between rgba colors', done => {
+    const from = 'rgba( 200, 50, 30, 0.5 )'
+    const to = 'rgba(240,100,80,0.95)'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -204,21 +184,21 @@ describe( 'rgba', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect([ isRgbaStr( color ), isHexStr( color )]).toInclude( true );
+        currentColor = color
+        expect(isRgbaStr(color)).toBe(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
-      },
-    });
-  });
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
 
-  it( 'should tween from rgba color to rgb color', done => {
-    const from = 'rgba( 200, 50, 30, 0.5 )';
-    const to = 'rgb(240,100,80)';
+  it('should tween from rgba color to hex color', done => {
+    const from = 'rgba( 200, 50, 30, 0.5 )'
+    const to = '#000000'
 
-    let currentColor;
+    let currentColor
 
     tween({
       from,
@@ -226,13 +206,35 @@ describe( 'rgba', () => {
       duration: 100,
       middleware: [ colorMiddleware ],
       next: color => {
-        currentColor = color;
-        expect([ isRgbaStr( color ), isRgbStr( color )]).toInclude( true );
+        currentColor = color
+        expect([ isRgbaStr(color), isHexStr(color) ]).toInclude(true)
       },
       complete: () => {
-        expect( currentColor ).toBe( to );
-        done();
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
+
+  it('should tween from rgba color to rgb color', done => {
+    const from = 'rgba( 200, 50, 30, 0.5 )'
+    const to = 'rgb(240,100,80)'
+
+    let currentColor
+
+    tween({
+      from,
+      to,
+      duration: 100,
+      middleware: [ colorMiddleware ],
+      next: color => {
+        currentColor = color
+        expect([ isRgbaStr(color), isRgbStr(color) ]).toInclude(true)
       },
-    });
-  });
-});
+      complete: () => {
+        expect(currentColor).toBe(to)
+        done()
+      }
+    })
+  })
+})
